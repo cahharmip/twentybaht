@@ -9,12 +9,12 @@ import org.newdawn.slick.SlickException;
 public class twentybahtGame extends BasicGame{
 
 	//////////////////// GAME_SCREEN //////////////////////	
-	private final static int GAME_WIDTH = 800;
+	private final static int GAME_WIDTH = 1280;
 	private final static int GAME_HEIGHT = 800;
 	//___________________________________________________//
 	
-	
-	
+	/////////////// BLAA_FEILD ///////////////////////////
+	//___________________________________________________//
 	
 	public twentybahtGame(String title) {
 		super(title);
