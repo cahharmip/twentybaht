@@ -34,24 +34,26 @@ public class Player {
 	private float cooldownNormalAttack = 0; //SET_DELAY
 	private float playerSkillDamage = 20;
 	private float cooldownSkillAttack = 0; //SET_DELAY
-	private boolean IsAttacking = false;
-	private boolean IsAttacked = false;
+	private boolean isMoveing = false;
+	private boolean isAttacking = false;
+	private boolean isAttacked = false;
 	private float immuneTime = 0 ; //SET_DELAY
 	//_______________________________________//
 	
 	public Player(float x,float y) throws SlickException{
 		playerPunchSpriteSheet = new SpriteSheet("image/spritesheet.png",PLAYERPUNCHSPRITE_WIDTH,PLAYERPUNCHSPRITE_HEIGHT);
 		playerWalkSpriteSheet = new SpriteSheet("image/walkspritesheet.png",PLAYERPUNCHSPRITE_WIDTH,PLAYERPUNCHSPRITE_HEIGHT);
-		playerIdleSpriteSheet = new SpriteSheet("image/test_char_still.png,",205,154);
+		playerIdleSpriteSheet = new SpriteSheet("image/testcharstill.png",205,154);
 		playerPunchAnimation = new Animation(playerPunchSpriteSheet,100);
 		playerWalkAnimation = new Animation(playerWalkSpriteSheet,100);
-		playerIdleAnimation = new Animation(playerIdleSpriteSheet,0);
+		playerIdleAnimation = new Animation(playerIdleSpriteSheet,100);
 		playerX = x;
 		playerY = y;
 	}
 	
 	public void moveLeft(){
 		this.playerX -= velocityX;
+		
 	}
 	
 	public void moveRight(){
@@ -59,21 +61,34 @@ public class Player {
 	}
 	
 	public void render(){
-		playerPunchAnimation.getCurrentFrame().getFlippedCopy(direction, false).draw(playerX,playerY);
+		if ( isMoveing == true){
+			playerWalkAnimation.start();
+			playerWalkAnimation.getCurrentFrame().getFlippedCopy(direction, false).draw(playerX,playerY);
+		}else{
+			playerWalkAnimation.stop();
+			playerIdleAnimation.getCurrentFrame().getFlippedCopy(direction, false).draw(playerX,playerY);
+		}
+		
 	}
 	
 	public void updateAnimation(int delta){	
-		playerPunchAnimation.update(delta);
+		playerWalkAnimation.update(delta);
 	}
 	
 	void updateMovement(Input input,int delta) {
 		if (input.isKeyDown(Input.KEY_A)) { 
 			moveLeft();
 			this.direction = true;
+			this.isMoveing = true;
+    }else{
+    	this.isMoveing = false;
     }
     if (input.isKeyDown(Input.KEY_S)) {
     	moveRight();
     	this.direction = false;
+    	this.isMoveing = true;
+    }else{
+    	this.isMoveing = false;
     }
 	}
 }
