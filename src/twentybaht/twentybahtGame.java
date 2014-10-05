@@ -6,6 +6,7 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -28,7 +29,7 @@ public class twentybahtGame extends BasicGame{
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 	//	charAnimation.draw(200,200);
-		player.punchRender();
+		player.render();
 	}
 
 	@Override
@@ -44,8 +45,10 @@ public class twentybahtGame extends BasicGame{
 	public void update(GameContainer container, int delta) throws SlickException {
 	//	charAnimation.update(delta);
 		player.updateAnimation(delta);
+		Input input = container.getInput();
+		player.updateMovement(input, delta);
 	}
-
+	
 	public static void main(String[]args){
 		try {
       twentybahtGame game = new twentybahtGame("Let's get twenty baht!");
