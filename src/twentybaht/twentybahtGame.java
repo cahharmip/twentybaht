@@ -38,7 +38,7 @@ public class twentybahtGame extends BasicGame{
 		container.getGraphics().setBackground(background);
 	//	charSpriteSheet = new SpriteSheet("image/spritesheet.png", 209, 158);
 	//	charAnimation = new Animation(charSpriteSheet,50);
-		player = new Player(200,500);
+		player = new Player(200,508);
 	}
 
 	@Override
