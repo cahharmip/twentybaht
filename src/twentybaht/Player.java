@@ -11,9 +11,14 @@ public class Player {
 	////////////PLAYER_POSITION///////////////
 	private float playerX = 0;
 	private float playerY = 0;
+	//Color filter = new Color(100,100,100);
+	//______________________________________//
+	
+	////////////PICTURE_VARIABLE//////////////
 	private SpriteSheet playerSpriteSheet;
 	private Animation playerAnimation;
-	//Color filter = new Color(100,100,100);
+	private static final int PLAYERSPRITE_WIDTH = 209;
+	private static final int PLAYERSPRITE_HEIGHT = 158;
 	//______________________________________//
 	
 	/////////////PLAYER_STATUS////////////////
@@ -24,12 +29,13 @@ public class Player {
 	private float cooldownNormalAttack = 0; //SET_DELAY
 	private float playerSkillDamage = 20;
 	private float cooldownSkillAttack = 0; //SET_DELAY
+	private boolean IsAttacking = false;
 	private boolean IsAttacked = false;
 	private float immuneTime = 0 ; //SET_DELAY
 	//_______________________________________//
 	
 	public Player(float x,float y) throws SlickException{
-		playerSpriteSheet = new SpriteSheet("image/spritesheet.png",209,158);
+		playerSpriteSheet = new SpriteSheet("image/spritesheet.png",PLAYERSPRITE_WIDTH,PLAYERSPRITE_HEIGHT);
 		playerAnimation = new Animation(playerSpriteSheet,100);
 		playerX = x;
 		playerY = y;
@@ -44,6 +50,7 @@ public class Player {
 	}
 	
 	public void render(){
+		
 		playerAnimation.draw(playerX,playerY);
 	}
 	
