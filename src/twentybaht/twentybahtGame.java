@@ -1,10 +1,13 @@
 package twentybaht;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 public class twentybahtGame extends BasicGame{
 
@@ -14,7 +17,8 @@ public class twentybahtGame extends BasicGame{
 	//___________________________________________________//
 	
 	/////////////// BLAA_FEILD ///////////////////////////
-	//___________________________________________________//
+	Player player;
+	//__________________________________________________ //
 	
 	public twentybahtGame(String title) {
 		super(title);
@@ -22,18 +26,24 @@ public class twentybahtGame extends BasicGame{
 	}
 
 	@Override
-	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-	
+	public void render(GameContainer container, Graphics g) throws SlickException {
+	//	charAnimation.draw(200,200);
+		player.punchRender();
 	}
 
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
-		
+	public void init(GameContainer container) throws SlickException {
+		Color background = new Color(255, 182, 193);
+		container.getGraphics().setBackground(background);
+	//	charSpriteSheet = new SpriteSheet("image/spritesheet.png", 209, 158);
+	//	charAnimation = new Animation(charSpriteSheet,50);
+		player = new Player(200,500);
 	}
 
 	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
-		
+	public void update(GameContainer container, int delta) throws SlickException {
+	//	charAnimation.update(delta);
+		player.updateAnimation(delta);
 	}
 
 	public static void main(String[]args){
