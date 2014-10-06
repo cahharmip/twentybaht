@@ -83,6 +83,7 @@ public class Player {
     }else{
     	this.isMoveing = false;
     }
+		
     if (input.isKeyDown(Input.KEY_S)) {
     	moveRight();
     	this.direction = false;
